@@ -1,5 +1,6 @@
 # MyWeatherApp
 Aplikacja pogody przedstawia aktualne dane pogodowe dla danej lokalizacji, przewidywania na siedem kolejnych dni oraz przewidywania godzinowe na 48h. Po kliknięciu w określony dzień na liście uruchamiany jest popup ze szczegłówymi informacjami.
+Aplikacja napisana zgodnie z wzorcem MVVM.
 ## Technologie
 * Xamarin.Forms 4.6
 * C#
