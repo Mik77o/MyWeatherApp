@@ -17,14 +17,14 @@ Darmowe ikony pobierano ze strony:
 https://www.flaticon.com/
 
 ### Screenshots
-![Test Image 1](screenshots/screenshot_1.jpg)
+![Test Image 1](Screenshots/screenshot_1.jpg)
 
-![Test Image 2](screenshots/screenshot_2.jpg)
+![Test Image 2](Screenshots/screenshot_2.jpg)
 
-![Test Image 3](screenshots/screenshot_3.jpg)
+![Test Image 3](Screenshots/screenshot_3.jpg)
 
-![Test Image 4](screenshots/screenshot_4.jpg)
+![Test Image 4](Screenshots/screenshot_4.jpg)
 
-![Test Image 5](screenshots/screenshot_5.jpg)
+![Test Image 5](Screenshots/screenshot_5.jpg)
 
-![Test Image 6](screenshots/screenshot_6.jpg)
+![Test Image 6](Screenshots/screenshot_6.jpg)
