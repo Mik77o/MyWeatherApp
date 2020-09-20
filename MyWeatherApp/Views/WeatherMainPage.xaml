@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyWeatherApp.Views.WeatherMainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MyWeatherApp.Controls"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:vm="clr-namespace:MyWeatherApp.ViewModels"
+    Title="Informacje pogodowe"
+    BackgroundImageSource="background.jpg"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <vm:WeatherMainViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>
+
+    <Grid VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Frame
+            Margin="0,5,10,0"
+            Padding="5"
+            BackgroundColor="White"
+            BorderColor="Black"
+            CornerRadius="20"
+            HorizontalOptions="End">
+            <StackLayout Orientation="Horizontal">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoTo48HoursForecast}" />
+                </StackLayout.GestureRecognizers>
+                <Label
+                    FontAttributes="Bold"
+                    Text="Prognoza pogody na 48h"
+                    TextColor="Black" />
+                <Image HeightRequest="12" Source="arrow.png" />
+            </StackLayout>
+
+        </Frame>
+        <StackLayout
+            Grid.Row="1"
+            Margin="0,0,0,0"
+            HorizontalOptions="Center"
+            Orientation="Vertical"
+            VerticalOptions="Center">
+            <Frame
+                Margin="0"
+                BackgroundColor="Black"
+                BorderColor="White"
+                CornerRadius="20">
+                <StackLayout Orientation="Vertical">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="{Binding Location}"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                    <Label
+                        Margin="0,10"
+                        FontSize="10"
+                        HorizontalOptions="Center"
+                        Text="{Binding DateAndTime}"
+                        TextColor="White" />
+                    <Label
+                        FontSize="10"
+                        HorizontalOptions="Center"
+                        TextColor="White"
+                        VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="Wschód: " />
+                                    <Span FontAttributes="Bold" Text="{Binding SunriseTime}" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        FontSize="10"
+                        HorizontalOptions="Center"
+                        TextColor="White"
+                        VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="Zachód: " />
+                                    <Span FontAttributes="Bold" Text="{Binding SunsetTime}" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        FontAttributes="Italic"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="{Binding DescriptionOfWeather}"
+                        TextColor="White" />
+
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                        <Label
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span FontSize="20" Text="{Binding Temperature, StringFormat='{0:0.0}'}" />
+                                        <Span FontSize="15" Text=" °C" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <ffimageloading:CachedImage
+                            Margin="0"
+                            DownsampleToViewSize="True"
+                            ErrorPlaceholder="error.png"
+                            HeightRequest="50"
+                            Source="{Binding Icon}"
+                            VerticalOptions="Center"
+                            WidthRequest="50" />
+                        <Label
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="{Binding WindDirection}"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+        <Frame
+            Grid.Row="2"
+            Margin="10,-30,10,0"
+            Padding="0"
+            BackgroundColor="White"
+            BorderColor="Black"
+            CornerRadius="20"
+            HasShadow="True"
+            HeightRequest="100"
+            VerticalOptions="Start">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout
+                    Margin="5"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Vertical">
+                    <ffimageloading:CachedImage
+                        Margin="0"
+                        DownsampleToViewSize="True"
+                        ErrorPlaceholder="error.png"
+                        HeightRequest="25"
+                        HorizontalOptions="Center"
+                        Source="humidity.png" />
+
+                    <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            TextColor="Black">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="{Binding Humidity}" />
+                                        <Span Text=" %" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            FontSize="12"
+                            HorizontalOptions="Center"
+                            Text="Wilgotność"
+                            TextColor="Black" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout
+                    Grid.Column="1"
+                    Margin="5"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Vertical">
+                    <ffimageloading:CachedImage
+                        Margin="0"
+                        DownsampleToViewSize="True"
+                        ErrorPlaceholder="error.png"
+                        HeightRequest="25"
+                        HorizontalOptions="Center"
+                        Source="wind.png" />
+                    <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            TextColor="Black">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="{Binding WindSpeed}" />
+                                        <Span Text=" km/h" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            FontSize="12"
+                            HorizontalOptions="Center"
+                            Text="Wiatr"
+                            TextColor="Black" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout
+                    Grid.Column="2"
+                    Margin="5"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Vertical">
+                    <ffimageloading:CachedImage
+                        Margin="0"
+                        DownsampleToViewSize="True"
+                        ErrorPlaceholder="error.png"
+                        HeightRequest="25"
+                        HorizontalOptions="Center"
+                        Source="pressure.png" />
+                    <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            TextColor="Black">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="{Binding Pressure}" />
+                                        <Span
+                                            FontAttributes="Bold"
+                                            FontSize="14"
+                                            Text=" hPa" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            FontSize="12"
+                            HorizontalOptions="Center"
+                            Text="Ciśnienie"
+                            TextColor="Black" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout
+                    Grid.Column="3"
+                    Margin="5"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Vertical">
+                    <ffimageloading:CachedImage
+                        Margin="0"
+                        DownsampleToViewSize="True"
+                        ErrorPlaceholder="error.png"
+                        HeightRequest="25"
+                        HorizontalOptions="Center"
+                        Source="cloud.png" />
+                    <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            TextColor="Black">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="{Binding Clouds}" />
+                                        <Span
+                                            FontAttributes="Bold"
+                                            FontSize="14"
+                                            Text=" %" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            FontSize="12"
+                            HorizontalOptions="Center"
+                            Text="Zachmurzenie"
+                            TextColor="Black" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Frame>
+        <ListView
+            x:Name="WeatherForecastList"
+            Grid.Row="3"
+            Margin="10,5"
+            CachingStrategy="RecycleElement"
+            HasUnevenRows="True"
+            HorizontalOptions="FillAndExpand"
+            ItemTapped="WeatherForecastList_ItemTapped"
+            ItemsSource="{Binding DailyForecastList}"
+            SeparatorVisibility="None"
+            VerticalOptions="FillAndExpand"
+            VerticalScrollBarVisibility="Never">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <controls:CustomViewCell>
+                        <Frame
+                            Padding="5"
+                            BackgroundColor="White"
+                            BorderColor="Black"
+                            CornerRadius="20"
+                            HasShadow="False">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Margin="10,0,0,0"
+                                    FontAttributes="Bold"
+                                    FontSize="10"
+                                    MaxLines="1"
+                                    Text="{Binding Dt}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+
+                                <StackLayout Grid.Column="1" Orientation="Horizontal">
+                                    <ffimageloading:CachedImage
+                                        ErrorPlaceholder="error.png"
+                                        HorizontalOptions="Center"
+                                        Source="{Binding Icon}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        Text="{Binding WindDeg}"
+                                        TextColor="Black" />
+                                </StackLayout>
+                                <Label
+                                    Grid.Column="2"
+                                    Margin="0,0,10,0"
+                                    FontAttributes="Bold"
+                                    FontSize="17"
+                                    HorizontalOptions="End"
+                                    TextColor="Black"
+                                    VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="{Binding DayTemp}" TextColor="Green" />
+                                                <Span Text=" / " />
+                                                <Span Text="{Binding NightTemp}" />
+                                                <Span
+                                                    FontAttributes="None"
+                                                    FontSize="15"
+                                                    Text="°C" />
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </Frame>
+                    </controls:CustomViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ActivityIndicator
+            Grid.Row="2"
+            HeightRequest="40"
+            HorizontalOptions="Center"
+            IsRunning="True"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Center"
+            Visual="Material"
+            WidthRequest="40"
+            Color="DarkGreen" />
+    </Grid>
+
+</ContentPage>
