@@ -17,7 +17,7 @@ Darmowe ikony pobierano ze strony:
 https://www.flaticon.com/
 
 ### Screenshots
-![Test Image 1](Screenshots/screenshot_1.jpg)
+![Test Image 1](Screenshots/screenshot_1.jpg=100x20)
 
 ![Test Image 2](Screenshots/screenshot_2.jpg)
 
