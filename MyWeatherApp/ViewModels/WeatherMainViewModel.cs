@@ -153,7 +153,7 @@ namespace MyWeatherApp.ViewModels
                     await App.Current.MainPage.DisplayAlert("Błąd", "Coś poszło nie tak.", "OK");
                 }
 
-                var resultForDailyWeatherInfo = await HttpConnection.GetDailyWeatherInfoForSevenDaysAsync(Preferences.Get("Latitude", ""), Preferences.Get("Longitude", ""), "9938e34cee0260d31fa316a0edfeaa75");
+                var resultForDailyWeatherInfo = await HttpConnection.GetDailyWeatherInfoForSevenDaysAsync(Preferences.Get("Latitude", ""), Preferences.Get("Longitude", ""), "apiKey");
 
                 if (resultForDailyWeatherInfo.Daily != null)
                 {
