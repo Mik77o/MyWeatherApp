@@ -18,9 +18,8 @@ https://www.flaticon.com/
 
 ### Screenshots
 
-<img src="Screenshots/screenshot_1.jpg" alt="drawing" width="300" height="400"/>
-![Test Image 2](Screenshots/screenshot_2.jpg){ width=50% }{ height=50% }
-![Test Image 3](Screenshots/screenshot_3.jpg){ width=50% }{ height=50% }
-![Test Image 4](Screenshots/screenshot_4.jpg){ width=50% }{ height=50% }
-![Test Image 5](Screenshots/screenshot_5.jpg){ width=50% }{ height=50% }
-![Test Image 6](Screenshots/screenshot_6.jpg){ width=50% }{ height=50% }
+![Test Image 2](Screenshots/screenshot_2.jpg)
+![Test Image 3](Screenshots/screenshot_3.jpg)
+![Test Image 4](Screenshots/screenshot_4.jpg)
+![Test Image 5](Screenshots/screenshot_5.jpg)
+![Test Image 6](Screenshots/screenshot_6.jpg)
