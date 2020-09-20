@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyWeatherApp.Views.ForecastFor48HoursPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MyWeatherApp.Controls"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:vm="clr-namespace:MyWeatherApp.ViewModels"
+    Title="Prognoza na 48h"
+    BackgroundImageSource="background.png">
+
+    <ContentPage.BindingContext>
+        <vm:Forecast48HoursViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <StackLayout Orientation="Vertical">
+            <Frame
+                Margin="5"
+                BackgroundColor="Black"
+                BorderColor="White"
+                CornerRadius="20"
+                HorizontalOptions="FillAndExpand">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    Text="Prognoza pogody na najbliższe 48h"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+            </Frame>
+            <ListView
+                Margin="10,5"
+                GroupShortNameBinding="{Binding GroupKey}"
+                HasUnevenRows="True"
+                HorizontalOptions="FillAndExpand"
+                IsGroupingEnabled="true"
+                ItemTapped="WeatherHourInfoList_ItemTapped"
+                ItemsSource="{Binding GroupedHourly48ForecastList}"
+                SeparatorVisibility="None"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never">
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <controls:CustomViewCell Height="40">
+                            <Frame
+                                Margin="0"
+                                Padding="0"
+                                BackgroundColor="Green"
+                                BorderColor="Black"
+                                CornerRadius="20">
+                                <Label
+                                    HorizontalOptions="Center"
+                                    Text="{Binding GroupKey}"
+                                    TextColor="White"
+                                    VerticalOptions="Center" />
+                            </Frame>
+                        </controls:CustomViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:CustomViewCell>
+                            <Frame
+                                Padding="5"
+                                BackgroundColor="White"
+                                BorderColor="Black"
+                                CornerRadius="20"
+                                HasShadow="False">
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Margin="10,0"
+                                        FontAttributes="Bold"
+                                        FontSize="11"
+                                        MaxLines="1"
+                                        Text="{Binding Dt}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center" />
+
+                                    <StackLayout Grid.Column="1" Orientation="Horizontal">
+                                        <ffimageloading:CachedImage
+                                            ErrorPlaceholder="error.png"
+                                            HorizontalOptions="Center"
+                                            Source="{Binding Icon}"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            Text="{Binding WindDeg}"
+                                            TextColor="Black" />
+                                    </StackLayout>
+                                    <Label
+                                        Grid.Column="2"
+                                        Margin="0,0,10,0"
+                                        FontAttributes="Bold"
+                                        FontSize="17"
+                                        HorizontalOptions="End"
+                                        TextColor="{Binding ColorOfTemperatureLabel}"
+                                        VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="{Binding Temp}" />
+                                                    <Span
+                                                        FontAttributes="None"
+                                                        FontSize="15"
+                                                        Text="°C" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+                            </Frame>
+                        </controls:CustomViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <ActivityIndicator
+            HeightRequest="40"
+            HorizontalOptions="Center"
+            IsRunning="True"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Center"
+            Visual="Material"
+            WidthRequest="40"
+            Color="DarkGreen" />
+    </Grid>
+</ContentPage>

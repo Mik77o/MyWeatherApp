@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="MyWeatherApp.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="PrimaryColor">#12450E</Color>
+            <Color x:Key="SurfaceColor">#21761A</Color>
+
+            <Style x:Key="PageStyle" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource SurfaceColor}" />
+            </Style>
+
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>
