@@ -18,7 +18,7 @@ https://www.flaticon.com/
 
 ### Screenshots
 
-<img src="Screenshots/screenshot_1.jpg" alt="drawing" width="200" height="500"/>
+<img src="Screenshots/screenshot_1.jpg" alt="drawing" width="300" height="400"/>
 ![Test Image 2](Screenshots/screenshot_2.jpg){ width=50% }{ height=50% }
 ![Test Image 3](Screenshots/screenshot_3.jpg){ width=50% }{ height=50% }
 ![Test Image 4](Screenshots/screenshot_4.jpg){ width=50% }{ height=50% }
