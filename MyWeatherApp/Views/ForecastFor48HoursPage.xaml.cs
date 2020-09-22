@@ -23,14 +23,13 @@ namespace MyWeatherApp.Views
 
         private async void WeatherHourInfoList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Forecast48HoursModel hourlyWeatherItem = (Forecast48HoursModel)e.Item;
-
             if (viewModel.IsBusy)
                 return;
 
             viewModel.IsBusy = true;
             try
             {
+                Forecast48HoursModel hourlyWeatherItem = (Forecast48HoursModel)e.Item;
                 await PopupNavigation.Instance.PushAsync(new WeatherHourlyPopup(hourlyWeatherItem));
             }
             catch (Exception ex)

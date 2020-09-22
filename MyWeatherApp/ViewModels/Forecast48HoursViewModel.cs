@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
-using Xamarin.Forms;
 
 namespace MyWeatherApp.ViewModels
 {
@@ -14,6 +12,7 @@ namespace MyWeatherApp.ViewModels
     {
         public List<Forecast48HoursModel> Hourly48ForecastList { get; set; } = new List<Forecast48HoursModel>();
         public ObservableCollection<GroupingForListClass<string, Forecast48HoursModel>> GroupedHourly48ForecastList { get; set; } = new ObservableCollection<GroupingForListClass<string, Forecast48HoursModel>>();
+        private GeolocationModel geoModel { get; set; } = new GeolocationModel();
 
         public class GroupingForListClass<K, T> : ObservableCollection<T>
         {
@@ -33,11 +32,11 @@ namespace MyWeatherApp.ViewModels
                 return;
 
             IsBusy = true;
+
             try
             {
-                var i = Preferences.Get("Latitude", "");
-
-                var result = await HttpConnection.Get48HoursWeatherInfoAsync(Preferences.Get("Latitude", ""), Preferences.Get("Longitude", ""), "apiKey");
+                await GeolocationHelper.GetGeolocationInfo(geoModel);
+                var result = await HttpConnection.Get48HoursWeatherInfoAsync(geoModel.Lat, geoModel.Lon, "apiKey");
 
                 if (result.Hourly != null)
                 {

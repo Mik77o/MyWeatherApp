@@ -15,6 +15,7 @@ namespace MyWeatherApp.ViewModels
     {
         private readonly WeatherInfoModel model = new WeatherInfoModel();
         public ObservableCollection<DailyForecastForSevenDaysModel> DailyForecastList { get; set; } = new ObservableCollection<DailyForecastForSevenDaysModel>();
+        public GeolocationModel geoModel { get; set; } = new GeolocationModel();
 
         public string Location
         {
@@ -131,7 +132,7 @@ namespace MyWeatherApp.ViewModels
             IsBusy = true;
             try
             {
-                var result = await HttpConnection.GetActualWeatherInfoForLocationAsync("Rzeszów", "apiKey");
+                var result = await HttpConnection.GetActualWeatherInfoForLocationAsync(geoModel.Location, "apiKey");
                 if (result != null)
                 {
                     Location = result.Name;
@@ -153,7 +154,7 @@ namespace MyWeatherApp.ViewModels
                     await App.Current.MainPage.DisplayAlert("Błąd", "Coś poszło nie tak.", "OK");
                 }
 
-                var resultForDailyWeatherInfo = await HttpConnection.GetDailyWeatherInfoForSevenDaysAsync(Preferences.Get("Latitude", ""), Preferences.Get("Longitude", ""), "apiKey");
+                var resultForDailyWeatherInfo = await HttpConnection.GetDailyWeatherInfoForSevenDaysAsync(geoModel.Lat, geoModel.Lon, "apiKey");
 
                 if (resultForDailyWeatherInfo.Daily != null)
                 {
@@ -194,31 +195,6 @@ namespace MyWeatherApp.ViewModels
             finally
             {
                 IsBusy = false;
-            }
-        }
-
-        public async Task GetGeolocationInfo()
-        {
-            try
-            {
-                var location = await Geolocation.GetLastKnownLocationAsync();
-                if (location != null)
-                {
-                    Preferences.Set("Latitude", location.Latitude.ToString());
-                    Preferences.Set("Longitude", location.Longitude.ToString());
-                }
-            }
-            catch (FeatureNotSupportedException fnsEx)
-            {
-                await App.Current.MainPage.DisplayAlert("Błąd", $"Usługa geolokalizacji nie jest dostępna na tym urzędzeniu - {fnsEx}.", "OK");
-            }
-            catch (PermissionException pEx)
-            {
-                await App.Current.MainPage.DisplayAlert("Błąd", $"Wystąpił problem z uprawnieniami lokalizacji - {pEx}.", "OK");
-            }
-            catch (Exception ex)
-            {
-                await App.Current.MainPage.DisplayAlert("Błąd", $"Coś poszło nie tak {ex}", "OK");
             }
         }
     }

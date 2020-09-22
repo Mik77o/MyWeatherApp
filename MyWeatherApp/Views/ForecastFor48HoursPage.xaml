@@ -69,18 +69,35 @@
                                 HasShadow="False">
                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="140" />
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label
-                                        Margin="10,0"
-                                        FontAttributes="Bold"
-                                        FontSize="11"
-                                        MaxLines="1"
-                                        Text="{Binding Dt}"
-                                        TextColor="Black"
-                                        VerticalOptions="Center" />
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            Margin="10,0"
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            MaxLines="1"
+                                            Text="{Binding Dt}"
+                                            TextColor="Black"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            Margin="10,0"
+                                            FontAttributes="Bold"
+                                            FontSize="11"
+                                            VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{Binding Pressure}" />
+                                                        <Span Text=" hPa" />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
 
                                     <StackLayout Grid.Column="1" Orientation="Horizontal">
                                         <ffimageloading:CachedImage
