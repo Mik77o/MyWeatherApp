@@ -69,7 +69,6 @@
                                 HasShadow="False">
                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                                     <Grid.ColumnDefinitions>
-<<<<<<< HEAD
                                         <ColumnDefinition Width="140" />
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
@@ -99,20 +98,6 @@
                                             </Label.FormattedText>
                                         </Label>
                                     </StackLayout>
-=======
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label
-                                        Margin="10,0"
-                                        FontAttributes="Bold"
-                                        FontSize="11"
-                                        MaxLines="1"
-                                        Text="{Binding Dt}"
-                                        TextColor="Black"
-                                        VerticalOptions="Center" />
->>>>>>> be34081bceddfe67b1c60177104fac1ef053ee9f
 
                                     <StackLayout Grid.Column="1" Orientation="Horizontal">
                                         <ffimageloading:CachedImage
