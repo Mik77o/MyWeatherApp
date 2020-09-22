@@ -15,7 +15,10 @@ namespace MyWeatherApp.ViewModels
     {
         private readonly WeatherInfoModel model = new WeatherInfoModel();
         public ObservableCollection<DailyForecastForSevenDaysModel> DailyForecastList { get; set; } = new ObservableCollection<DailyForecastForSevenDaysModel>();
+<<<<<<< HEAD
         public GeolocationModel geoModel { get; set; } = new GeolocationModel();
+=======
+>>>>>>> be34081bceddfe67b1c60177104fac1ef053ee9f
 
         public string Location
         {
@@ -132,7 +135,11 @@ namespace MyWeatherApp.ViewModels
             IsBusy = true;
             try
             {
+<<<<<<< HEAD
                 var result = await HttpConnection.GetActualWeatherInfoForLocationAsync(geoModel.Location, "apiKey");
+=======
+                var result = await HttpConnection.GetActualWeatherInfoForLocationAsync("Rzeszów", "apiKey");
+>>>>>>> be34081bceddfe67b1c60177104fac1ef053ee9f
                 if (result != null)
                 {
                     Location = result.Name;
@@ -154,7 +161,11 @@ namespace MyWeatherApp.ViewModels
                     await App.Current.MainPage.DisplayAlert("Błąd", "Coś poszło nie tak.", "OK");
                 }
 
+<<<<<<< HEAD
                 var resultForDailyWeatherInfo = await HttpConnection.GetDailyWeatherInfoForSevenDaysAsync(geoModel.Lat, geoModel.Lon, "apiKey");
+=======
+                var resultForDailyWeatherInfo = await HttpConnection.GetDailyWeatherInfoForSevenDaysAsync(Preferences.Get("Latitude", ""), Preferences.Get("Longitude", ""), "apiKey");
+>>>>>>> be34081bceddfe67b1c60177104fac1ef053ee9f
 
                 if (resultForDailyWeatherInfo.Daily != null)
                 {
@@ -197,5 +208,33 @@ namespace MyWeatherApp.ViewModels
                 IsBusy = false;
             }
         }
+<<<<<<< HEAD
+=======
+
+        public async Task GetGeolocationInfo()
+        {
+            try
+            {
+                var location = await Geolocation.GetLastKnownLocationAsync();
+                if (location != null)
+                {
+                    Preferences.Set("Latitude", location.Latitude.ToString());
+                    Preferences.Set("Longitude", location.Longitude.ToString());
+                }
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                await App.Current.MainPage.DisplayAlert("Błąd", $"Usługa geolokalizacji nie jest dostępna na tym urzędzeniu - {fnsEx}.", "OK");
+            }
+            catch (PermissionException pEx)
+            {
+                await App.Current.MainPage.DisplayAlert("Błąd", $"Wystąpił problem z uprawnieniami lokalizacji - {pEx}.", "OK");
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Błąd", $"Coś poszło nie tak {ex}", "OK");
+            }
+        }
+>>>>>>> be34081bceddfe67b1c60177104fac1ef053ee9f
     }
 }

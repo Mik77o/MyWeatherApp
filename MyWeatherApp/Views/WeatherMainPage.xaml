@@ -94,6 +94,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
+<<<<<<< HEAD
                     <Frame
                         Padding="2"
                         BackgroundColor="White"
@@ -105,6 +106,14 @@
                             Text="{Binding DescriptionOfWeather}"
                             TextColor="Black" />
                     </Frame>
+=======
+                    <Label
+                        FontAttributes="Italic"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="{Binding DescriptionOfWeather}"
+                        TextColor="White" />
+>>>>>>> be34081bceddfe67b1c60177104fac1ef053ee9f
 
                     <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                         <Label
@@ -323,7 +332,11 @@
                             HasShadow="False">
                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                                 <Grid.ColumnDefinitions>
+<<<<<<< HEAD
                                     <ColumnDefinition Width="140" />
+=======
+                                    <ColumnDefinition Width="*" />
+>>>>>>> be34081bceddfe67b1c60177104fac1ef053ee9f
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>

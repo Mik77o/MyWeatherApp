@@ -5,6 +5,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+<<<<<<< HEAD
+=======
+using Xamarin.Essentials;
+using Xamarin.Forms;
+>>>>>>> be34081bceddfe67b1c60177104fac1ef053ee9f
 
 namespace MyWeatherApp.ViewModels
 {
@@ -12,7 +17,10 @@ namespace MyWeatherApp.ViewModels
     {
         public List<Forecast48HoursModel> Hourly48ForecastList { get; set; } = new List<Forecast48HoursModel>();
         public ObservableCollection<GroupingForListClass<string, Forecast48HoursModel>> GroupedHourly48ForecastList { get; set; } = new ObservableCollection<GroupingForListClass<string, Forecast48HoursModel>>();
+<<<<<<< HEAD
         private GeolocationModel geoModel { get; set; } = new GeolocationModel();
+=======
+>>>>>>> be34081bceddfe67b1c60177104fac1ef053ee9f
 
         public class GroupingForListClass<K, T> : ObservableCollection<T>
         {
@@ -32,11 +40,19 @@ namespace MyWeatherApp.ViewModels
                 return;
 
             IsBusy = true;
+<<<<<<< HEAD
 
             try
             {
                 await GeolocationHelper.GetGeolocationInfo(geoModel);
                 var result = await HttpConnection.Get48HoursWeatherInfoAsync(geoModel.Lat, geoModel.Lon, "apiKey");
+=======
+            try
+            {
+                var i = Preferences.Get("Latitude", "");
+
+                var result = await HttpConnection.Get48HoursWeatherInfoAsync(Preferences.Get("Latitude", ""), Preferences.Get("Longitude", ""), "apiKey");
+>>>>>>> be34081bceddfe67b1c60177104fac1ef053ee9f
 
                 if (result.Hourly != null)
                 {
