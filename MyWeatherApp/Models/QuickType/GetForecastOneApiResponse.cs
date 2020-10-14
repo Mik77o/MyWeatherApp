@@ -143,7 +143,7 @@ namespace MyWeatherApp.Models.QuickType
         [JsonProperty("weather", NullValueHandling = NullValueHandling.Ignore)]
         public List<Weather> Weather { get; set; }
 
-        [JsonProperty("rain", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("1h", NullValueHandling = NullValueHandling.Ignore)]
         public string Rain { get; set; }
 
         [JsonProperty("pop", NullValueHandling = NullValueHandling.Ignore)]

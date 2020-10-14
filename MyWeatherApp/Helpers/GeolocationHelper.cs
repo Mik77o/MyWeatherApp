@@ -28,14 +28,6 @@ namespace MyWeatherApp.Helpers
                 var geoPlacemark = geoLocations.FirstOrDefault();
                 mod.Location = geoPlacemark.Locality;
             }
-            catch (FeatureNotSupportedException fnsEx)
-            {
-                await App.Current.MainPage.DisplayAlert("Błąd", $"Usługa geolokalizacji nie jest dostępna na tym urzędzeniu - {fnsEx}.", "OK");
-            }
-            catch (PermissionException pEx)
-            {
-                await App.Current.MainPage.DisplayAlert("Błąd", $"Wystąpił problem z uprawnieniami lokalizacji - {pEx}.", "OK");
-            }
             catch (Exception ex)
             {
                 await App.Current.MainPage.DisplayAlert("Błąd", $"Coś poszło nie tak {ex}", "OK");

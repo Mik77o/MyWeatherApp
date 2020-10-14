@@ -33,10 +33,7 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GoTo48HoursForecast}" />
                 </StackLayout.GestureRecognizers>
-                <Label
-                    FontAttributes="Bold"
-                    Text="Prognoza pogody na 48h"
-                    TextColor="Black" />
+                <Label FontAttributes="Bold" Text="Prognoza pogody na 48h" TextColor="Black" />
                 <Image HeightRequest="12" Source="arrow.png" />
             </StackLayout>
 
@@ -94,10 +91,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Frame
-                        Padding="2"
-                        BackgroundColor="White"
-                        CornerRadius="20">
+                    <Frame Padding="8" BackgroundColor="White" CornerRadius="20">
                         <Label
                             FontAttributes="Italic"
                             FontSize="20"
@@ -155,10 +149,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <StackLayout
-                    Margin="5"
-                    HorizontalOptions="CenterAndExpand"
-                    Orientation="Vertical">
+                <StackLayout Margin="5" HorizontalOptions="CenterAndExpand" Orientation="Vertical">
                     <ffimageloading:CachedImage
                         Margin="0"
                         DownsampleToViewSize="True"
@@ -245,10 +236,7 @@
                                 <FormattedString>
                                     <FormattedString.Spans>
                                         <Span Text="{Binding Pressure}" />
-                                        <Span
-                                            FontAttributes="Bold"
-                                            FontSize="14"
-                                            Text=" hPa" />
+                                        <Span FontAttributes="Bold" FontSize="14" Text=" hPa" />
                                     </FormattedString.Spans>
                                 </FormattedString>
                             </Label.FormattedText>
@@ -282,10 +270,7 @@
                                 <FormattedString>
                                     <FormattedString.Spans>
                                         <Span Text="{Binding Clouds}" />
-                                        <Span
-                                            FontAttributes="Bold"
-                                            FontSize="14"
-                                            Text=" %" />
+                                        <Span FontAttributes="Bold" FontSize="14" Text=" %" />
                                     </FormattedString.Spans>
                                 </FormattedString>
                             </Label.FormattedText>
@@ -361,10 +346,7 @@
                                                 <Span Text="{Binding DayTemp}" TextColor="Green" />
                                                 <Span Text=" / " />
                                                 <Span Text="{Binding NightTemp}" />
-                                                <Span
-                                                    FontAttributes="None"
-                                                    FontSize="15"
-                                                    Text="°C" />
+                                                <Span FontAttributes="None" FontSize="15" Text="°C" />
                                             </FormattedString.Spans>
                                         </FormattedString>
                                     </Label.FormattedText>
